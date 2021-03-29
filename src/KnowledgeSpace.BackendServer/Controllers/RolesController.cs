@@ -28,8 +28,8 @@ namespace KnowledgeSpace.BackendServer.Controllers
         }
 
         [HttpPost]
-        [ClaimRequirement(FunctionCode.SYSTEM_ROLE, CommandCode.CREATE)]
-        [ApiValidationFilter]
+        //[ClaimRequirement(FunctionCode.SYSTEM_ROLE, CommandCode.CREATE)]
+        //[ApiValidationFilter]
         public async Task<IActionResult> PostRole(RoleCreateRequest request)
         {
             var role = new IdentityRole()
