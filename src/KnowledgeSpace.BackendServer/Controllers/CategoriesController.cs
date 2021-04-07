@@ -29,7 +29,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
 
         [HttpPost]
         //[ClaimRequirement(FunctionCode.CONTENT_CATEGORY, CommandCode.CREATE)]
-        //[ApiValidationFilter]
+        [ApiValidationFilter]
         public async Task<IActionResult> PostCategory([FromBody] CategoryCreateRequest request)
         {
             var category = new Category()
