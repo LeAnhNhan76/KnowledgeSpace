@@ -52,10 +52,11 @@ namespace KnowledgeSpace.BackendServer
                 options.Events.RaiseFailureEvents = true;
                 options.Events.RaiseSuccessEvents = true;
             })
-            .AddInMemoryApiResources(Config.Apis)
+            .AddInMemoryApiScopes(Config.Apis)
             .AddInMemoryClients(Config.Clients)
             .AddInMemoryIdentityResources(Config.Ids)
-            .AddAspNetIdentity<User>();
+            .AddAspNetIdentity<User>()
+            .AddDeveloperSigningCredential();
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -76,8 +77,33 @@ namespace KnowledgeSpace.BackendServer
             services.AddControllersWithViews()
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<RoleCreateRequestValidator>());
 
-            services.AddRazorPages();
+            services.AddAuthentication()
+               .AddLocalApi("Bearer", option =>
+               {
+                   option.ExpectedScope = "api.knowledgespace";
+               });
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Bearer", policy =>
+                {
+                    policy.AddAuthenticationSchemes("Bearer");
+                    policy.RequireAuthenticatedUser();
+                });
+            });
+
+            services.AddRazorPages(options =>
+            {
+                options.Conventions.AddAreaFolderRouteModelConvention("Identity", "/Account/", model =>
+                {
+                    foreach (var selector in model.Selectors)
+                    {
+                        var attributeRouteModel = selector.AttributeRouteModel;
+                        attributeRouteModel.Order = -1;
+                        attributeRouteModel.Template = attributeRouteModel.Template.Remove(0, "Identity".Length);
+                    }
+                });
+            });
             services.AddTransient<DbInitializer>();
             services.AddTransient<IEmailSender, EmailSenderService>();
 
@@ -85,28 +111,28 @@ namespace KnowledgeSpace.BackendServer
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Knowledge Space API", Version = "v1" });
 
-                //c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                //{
-                //    Type = SecuritySchemeType.OAuth2,
-                //    Flows = new OpenApiOAuthFlows
-                //    {
-                //        Implicit = new OpenApiOAuthFlow
-                //        {
-                //            AuthorizationUrl = new Uri(Configuration["AuthorityUrl"] + "/connect/authorize"),
-                //            Scopes = new Dictionary<string, string> { { "api.knowledgespace", "KnowledgeSpace API" } }
-                //        },
-                //    },
-                //});
-                //c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                //{
-                //    {
-                //        new OpenApiSecurityScheme
-                //        {
-                //            Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
-                //        },
-                //        new List<string>{ "api.knowledgespace" }
-                //    }
-                //});
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Type = SecuritySchemeType.OAuth2,
+                    Flows = new OpenApiOAuthFlows
+                    {
+                        Implicit = new OpenApiOAuthFlow
+                        {
+                            AuthorizationUrl = new Uri("https://localhost:5000/connect/authorize"),
+                            Scopes = new Dictionary<string, string> { { "api.knowledgespace", "KnowledgeSpace API" } }
+                        },
+                    },
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
+                        },
+                        new List<string>{ "api.knowledgespace" }
+                    }
+                });
             });
         }
 
@@ -140,7 +166,7 @@ namespace KnowledgeSpace.BackendServer
 
             app.UseSwaggerUI(c =>
             {
-                //c.OAuthClientId("swagger");
+                c.OAuthClientId("swagger");
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Knowledge Space API V1");
             });
         }

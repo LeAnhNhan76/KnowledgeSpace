@@ -5,6 +5,7 @@ using KnowledgeSpace.BackendServer.Data.Entities;
 using KnowledgeSpace.BackendServer.Helpers;
 using KnowledgeSpace.ViewModels;
 using KnowledgeSpace.ViewModels.Systems;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -51,6 +52,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
 
         [HttpGet]
         //[ClaimRequirement(FunctionCode.SYSTEM_ROLE, CommandCode.VIEW)]
+        [Authorize("Bearer")]
         public async Task<IActionResult> GetRoles()
         {
             var roles = _roleManager.Roles;

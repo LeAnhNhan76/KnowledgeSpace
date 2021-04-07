@@ -16,10 +16,10 @@ namespace KnowledgeSpace.BackendServer.IdentityServer
                 new IdentityResources.Profile()
           };
 
-        public static IEnumerable<ApiResource> Apis =>
-            new ApiResource[]
+        public static IEnumerable<ApiScope> Apis =>
+            new ApiScope[]
             {
-                        new ApiResource("api.knowledgespace", "KnowledgeSpace API")
+                new ApiScope("api.knowledgespace", "KnowledgeSpace API")
             };
 
         public static IEnumerable<Client> Clients =>
