@@ -1,0 +1,68 @@
+<nav [ngClass]="{ sidebarPushRight: isActive, collapsed: collapsed }" class="sidebar">
+    <div class="list-group">
+        <a [routerLinkActive]="['router-link-active']" class="list-group-item" routerLink="/dashboard">
+            <i class="fa fa-fw fa-dashboard"></i>&nbsp;
+            <span>{{ 'Dashboard' | translate }}</span>
+        </a>
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/charts']" class="list-group-item">
+            <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
+            <span>{{ 'Charts' | translate }}</span>
+        </a>
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/tables']" class="list-group-item">
+            <i class="fa fa-fw fa-table"></i>&nbsp;
+            <span>{{ 'Tables' | translate }}</span>
+        </a>
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/forms']" class="list-group-item">
+            <i class="fa fa-fw fa-edit"></i>&nbsp;
+            <span>{{ 'Forms' | translate }}</span>
+        </a>
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/bs-element']" class="list-group-item">
+            <i class="fa fa-fw fa-desktop"></i>&nbsp;
+            <span>{{ 'Bootstrap Element' | translate }}</span>
+        </a>
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/grid']" class="list-group-item">
+            <i class="fa fa-fw fa-wrench"></i>&nbsp;
+            <span>{{ 'Bootstrap Grid' | translate }}</span>
+        </a>
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/components']" class="list-group-item">
+            <i class="fa fa-th-list"></i>&nbsp;
+            <span>{{ 'Component' | translate }}</span>
+        </a>
+        <div class="nested-menu">
+            <a (click)="addExpandClass('pages')" class="list-group-item">
+                <i class="fa fa-plus"></i>&nbsp;
+                <span>{{ 'Menu' | translate }}</span>
+            </a>
+            <li [class.expand]="showMenu === 'pages'" class="nested">
+                <ul class="submenu">
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-monument"></i>&nbsp;
+                            <span>{{ 'Submenu' | translate }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-monument"></i>&nbsp;
+                            <span>{{ 'Submenu' | translate }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-monument"></i>&nbsp;
+                            <span>{{ 'Submenu' | translate }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </div>
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/blank-page']" class="list-group-item">
+            <i class="fa fa-file-o"></i>&nbsp;
+            <span>{{ 'Blank Page' | translate }}</span>
+        </a>
+    </div>
+    <div (click)="toggleCollapsed()" [ngClass]="{ collapsed: collapsed }" class="toggle-button">
+        <i class="fa fa-fw fa-angle-double-{{ collapsed ? 'right' : 'left' }}"></i>&nbsp;
+        <span>{{ 'Collapse Sidebar' | translate }}</span>
+    </div>
+</nav>
