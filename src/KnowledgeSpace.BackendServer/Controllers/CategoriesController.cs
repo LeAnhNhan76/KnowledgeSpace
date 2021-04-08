@@ -28,7 +28,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
         }
 
         [HttpPost]
-        //[ClaimRequirement(FunctionCode.CONTENT_CATEGORY, CommandCode.CREATE)]
+        [ClaimRequirement(FunctionCode.CONTENT_CATEGORY, CommandCode.CREATE)]
         [ApiValidationFilter]
         public async Task<IActionResult> PostCategory([FromBody] CategoryCreateRequest request)
         {
