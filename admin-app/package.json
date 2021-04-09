@@ -30,6 +30,8 @@
         "core-js": "3.6.5",
         "font-awesome": "4.7.0",
         "ng2-charts": "2.4.2",
+        "ngx-spinner": "^11.0.1",
+        "oidc-client": "^1.9.1",
         "rxjs": "6.6.3",
         "tslib": "2.0.1",
         "zone.js": "~0.10.3"

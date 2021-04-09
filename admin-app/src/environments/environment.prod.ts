@@ -1,3 +1,4 @@
 export const environment = {
-    production: true
+    production: true,
+    apiUrl: 'https://identityserver4-kns.com.vn'
 };
