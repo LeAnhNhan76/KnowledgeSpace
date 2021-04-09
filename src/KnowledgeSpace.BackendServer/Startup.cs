@@ -27,6 +27,8 @@ namespace KnowledgeSpace.BackendServer
             Configuration = configuration;
         }
 
+        private readonly string KspSpecificOrigins = "KspSpecificOrigins";
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -54,6 +56,17 @@ namespace KnowledgeSpace.BackendServer
             .AddAspNetIdentity<User>()
             .AddProfileService<IdentityProfileService>()
             .AddDeveloperSigningCredential();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(KspSpecificOrigins,
+                builder =>
+                {
+                    builder.WithOrigins(Configuration["AllowOrigins"])
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -165,6 +178,8 @@ namespace KnowledgeSpace.BackendServer
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(KspSpecificOrigins);
 
             app.UseEndpoints(endpoints =>
             {

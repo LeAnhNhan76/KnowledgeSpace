@@ -23,7 +23,6 @@ import { AuthService } from './shared/services';
     declarations: [AppComponent],
     providers: [
         AuthGuard,
-        AuthService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptor,
