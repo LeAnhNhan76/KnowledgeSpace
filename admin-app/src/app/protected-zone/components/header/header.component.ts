@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
-import { AuthService } from '../../../shared/services';
+import { AuthService } from '@app/shared/services';
 
 @Component({
     selector: 'app-header',

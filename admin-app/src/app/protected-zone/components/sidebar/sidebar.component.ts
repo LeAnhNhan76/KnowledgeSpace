@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { Function } from '@app/shared/models';
+import { AuthService, UsersService } from '@app/shared/services';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -12,15 +14,20 @@ export class SidebarComponent implements OnInit {
     collapsed: boolean;
     showMenu: string;
     pushRightClass: string;
+    functions: Function[];
 
     @Output() collapsedEvent = new EventEmitter<boolean>();
 
-    constructor(private translate: TranslateService, public router: Router) {
+    constructor(private translate: TranslateService, public router: Router
+        , private usersService: UsersService
+        , private authService: AuthService
+        ) {
         this.router.events.subscribe((val) => {
             if (val instanceof NavigationEnd && window.innerWidth <= 992 && this.isToggled()) {
                 this.toggleSidebar();
             }
         });
+        this.loadMenu();
     }
 
     ngOnInit() {
@@ -68,5 +75,14 @@ export class SidebarComponent implements OnInit {
 
     onLoggedout() {
         localStorage.removeItem('isLoggedin');
+    }
+
+    loadMenu() {
+        const profile = this.authService.profile;
+        console.log('profile', profile);
+        this.usersService.getMenuByUser(profile.sub).subscribe((response : Function[]) => {
+            this.functions = response;
+            console.log('functions', response);
+        });
     }
 }

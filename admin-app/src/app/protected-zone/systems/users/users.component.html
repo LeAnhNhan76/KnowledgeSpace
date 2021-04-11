@@ -2,3 +2,8 @@
 <ul>
     <li *ngFor="let user of users$ | async">{{user.userName}}</li>
 </ul>
+
+<p>menu list!</p>
+<ul>
+    <li *ngFor="let function of functions$ | async">{{function.name}}</li>
+</ul>
