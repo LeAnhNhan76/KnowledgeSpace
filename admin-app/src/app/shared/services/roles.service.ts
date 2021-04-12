@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BaseService } from './base.service';
 import { catchError, map } from 'rxjs/operators';
 import { Role, Pagination, Permission } from '../models';
-import { roleUrls } from '@app/shared/services/commons/constants/apiContants';
+import { roleUrls } from '@app/shared/services/commons/constants';
 
 @Injectable({ providedIn: 'root' })
 export class RolesService extends BaseService {

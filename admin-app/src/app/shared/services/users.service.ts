@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BaseService } from './base.service';
 import { catchError, map } from 'rxjs/operators';
 import { Function, User } from '../models';
-import { userUrls } from '@app/shared/services/commons/constants/apiContants';
+import { userUrls } from '@app/shared/services/commons/constants';
 import { UtilitiesService } from './utilities.service';
 
 @Injectable({ providedIn: 'root' })
