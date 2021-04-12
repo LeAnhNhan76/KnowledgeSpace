@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KnowledgeSpace.BackendServer.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     [Authorize("Bearer")]
     public class BaseController : ControllerBase
