@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { LanguageTranslationModule } from './shared/modules/language-translation/language-translation.module';
-import { AuthService } from './shared/services';
+import '../extensions/string.extensions';
 
 @NgModule({
     imports: [

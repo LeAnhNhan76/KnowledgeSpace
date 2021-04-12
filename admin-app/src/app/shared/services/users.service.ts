@@ -4,7 +4,6 @@ import { BaseService } from './base.service';
 import { catchError, map } from 'rxjs/operators';
 import { Function, User } from '../models';
 import { userUrls } from '@app/shared/services/commons/constants/apiContants';
-import { FormatString } from '@app/shared/services/commons/stringHelper';
 import { UtilitiesService } from './utilities.service';
 
 @Injectable({ providedIn: 'root' })
@@ -30,7 +29,7 @@ export class UsersService extends BaseService {
               'Content-Type': 'application/json'
           })  
         };
-        return this.http.get<Function[]>(FormatString(userUrls.getMenuByUser, userId), httpOptions)
+        return this.http.get<Function[]>(userUrls.getMenuByUser.format(userId), httpOptions)
             .pipe(map(response => {
                 var functions = this.utilitiesService.UnflatteringForLeftMenu(response);
                 return functions;
