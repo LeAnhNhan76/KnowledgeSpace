@@ -1,2 +1,2 @@
-export * from './message.constants';
-export * from './api.constants';
+export * from './message.constant';
+export * from './api.constant';
