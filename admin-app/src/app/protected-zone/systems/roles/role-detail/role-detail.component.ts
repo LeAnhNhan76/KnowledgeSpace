@@ -4,7 +4,7 @@ import { NotificationService } from '@app/shared/services';
 import { RolesService } from '@app/shared/services/roles.service';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Subscription } from 'rxjs';
-import { MessageConstants } from '@app/shared/commons/constants';
+import { MessageConstants } from '@app/shared/core/constants';
 
 @Component({
   selector: 'app-role-detail',
