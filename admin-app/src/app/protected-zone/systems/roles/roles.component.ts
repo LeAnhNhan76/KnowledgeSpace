@@ -91,7 +91,7 @@ export class RolesComponent implements OnInit {
     };
     this.bsModalRef = this.modalService.show(RoleDetailComponent,
       {
-        //initialState: initialState,
+        initialState: initialState,
         class: 'modal-lg',
         backdrop: 'static'
       });

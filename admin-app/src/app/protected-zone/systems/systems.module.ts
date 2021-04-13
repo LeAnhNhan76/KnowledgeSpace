@@ -15,6 +15,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { RoleDetailComponent } from './roles/role-detail/role-detail.component';
 import { NotificationService } from '@app/shared/services';
 import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
+import { ValidationMessageModule } from '@app/shared/modules/validation-message/validation-message.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [FunctionsComponent, UsersComponent, RolesComponent, PermissionsComponent, RoleDetailComponent],
@@ -28,7 +30,10 @@ import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
     BlockUIModule,
     InputTextModule,
     ProgressSpinnerModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    ValidationMessageModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     NotificationService,
