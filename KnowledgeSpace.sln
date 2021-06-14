@@ -7,12 +7,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KnowledgeSpace.BackendServe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KnowledgeSpace.WebPortal", "src\KnowledgeSpace.WebPortal\KnowledgeSpace.WebPortal.csproj", "{EF6D5713-5477-4EFD-AB8B-29141DBF9934}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeSpace.ViewModels", "src\KnowledgeSpace.ViewModels\KnowledgeSpace.ViewModels.csproj", "{1FF535F2-139C-443A-BBB2-F3E489E8E4AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KnowledgeSpace.ViewModels", "src\KnowledgeSpace.ViewModels\KnowledgeSpace.ViewModels.csproj", "{1FF535F2-139C-443A-BBB2-F3E489E8E4AA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A2F8660D-5C9C-49FF-AD74-32399E991BEA}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D94F45C7-4905-42F5-BF81-B49FD396CB48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeSpace.BackendServer.UnitTest", "test\KnowledgeSpace.BackendServer.UnitTest\KnowledgeSpace.BackendServer.UnitTest.csproj", "{BBA6E778-A05F-4712-993D-8EE5F3D0C1D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,9 +36,16 @@ Global
 		{1FF535F2-139C-443A-BBB2-F3E489E8E4AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FF535F2-139C-443A-BBB2-F3E489E8E4AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FF535F2-139C-443A-BBB2-F3E489E8E4AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBA6E778-A05F-4712-993D-8EE5F3D0C1D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBA6E778-A05F-4712-993D-8EE5F3D0C1D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBA6E778-A05F-4712-993D-8EE5F3D0C1D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBA6E778-A05F-4712-993D-8EE5F3D0C1D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BBA6E778-A05F-4712-993D-8EE5F3D0C1D6} = {D94F45C7-4905-42F5-BF81-B49FD396CB48}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EA051DD7-C783-4A94-BC91-D11F45DB3BB3}
