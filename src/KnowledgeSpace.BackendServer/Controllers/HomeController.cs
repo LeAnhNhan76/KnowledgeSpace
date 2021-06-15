@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using KnowledgeSpace.ViewModels;
+﻿using KnowledgeSpace.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace KnowledgeSpace.BackendServer.Controllers
 {

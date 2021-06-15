@@ -1,7 +1,7 @@
 ﻿using KnowledgeSpace.BackendServer.Authorization;
-using KnowledgeSpace.BackendServer.Constants;
 using KnowledgeSpace.BackendServer.Data;
 using KnowledgeSpace.BackendServer.Data.Entities;
+using KnowledgeSpace.BackendServer.Enums;
 using KnowledgeSpace.BackendServer.Helpers;
 using KnowledgeSpace.ViewModels;
 using KnowledgeSpace.ViewModels.Systems;
@@ -112,7 +112,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
         [HttpPut("{id}")]
         [ClaimRequirement(FunctionCode.SYSTEM_ROLE, CommandCode.UPDATE)]
         [ApiValidationFilter]
-        public async Task<IActionResult> PutRole(string id, [FromBody]RoleCreateRequest roleVm)
+        public async Task<IActionResult> PutRole(string id, [FromBody] RoleCreateRequest roleVm)
         {
             if (id != roleVm.Id)
                 return BadRequest(new ApiBadRequestResponse("Role id not match"));
