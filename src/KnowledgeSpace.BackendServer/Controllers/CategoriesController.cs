@@ -32,7 +32,12 @@ namespace KnowledgeSpace.BackendServer.Controllers
         [ApiValidationFilter]
         public async Task<IActionResult> PostCategory([FromBody] CategoryCreateRequest request)
         {
-            var category = new Category()
+            var category = _context.Categories.FirstOrDefaultAsync(c => c.Name.ToLower() == request.Name.ToLower());
+            if (category != null)
+            {
+                return BadRequest(new ApiBadRequestResponse($"Category name '{request.Name}' is existed"));
+            }
+            var newCategory = new Category()
             {
                 Name = request.Name,
                 ParentId = request.ParentId,
@@ -40,14 +45,14 @@ namespace KnowledgeSpace.BackendServer.Controllers
                 SeoAlias = request.SeoAlias,
                 SeoDescription = request.SeoDescription
             };
-            _context.Categories.Add(category);
+            _context.Categories.Add(newCategory);
             var result = await _context.SaveChangesAsync();
 
             if (result > 0)
             {
                 await _cacheService.RemoveAsync("Categories");
 
-                return CreatedAtAction(nameof(GetById), new { id = category.Id }, request);
+                return CreatedAtAction(nameof(GetById), new { id = newCategory.Id }, request);
             }
             else
             {
