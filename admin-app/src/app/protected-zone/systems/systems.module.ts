@@ -17,6 +17,7 @@ import { NotificationService } from '@app/shared/services';
 import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { ValidationMessageModule } from '@app/shared/modules/validation-message/validation-message.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StudentsService} from '@app/shared/services';
 
 @NgModule({
   declarations: [FunctionsComponent, UsersComponent, RolesComponent, PermissionsComponent, RoleDetailComponent],
@@ -37,7 +38,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   providers: [
     NotificationService,
-    BsModalService
+    BsModalService,
+    StudentsService
   ]
 })
 export class SystemsModule { }

@@ -4,6 +4,7 @@
 </ul>
 
 <p>menu list!</p>
-<ul>
-    <li *ngFor="let function of functions$ | async">{{function.name}}</li>
-</ul>
+<input type="text" #textName (keyup)="0" />
+<app-roles *ngFor="let item of names" [name]="item" (onReturnResultVote)="onHandleResultVote($event)"></app-roles>
+<p>Count Agree: {{numAgree}}</p>
+<p>Count Disagree: {{numDisagree}}</p>

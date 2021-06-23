@@ -10,6 +10,7 @@ import { AuthGuard } from './shared';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { LanguageTranslationModule } from './shared/modules/language-translation/language-translation.module';
 import '@app/shared/core/extensions';
+import {ExponentialStrengthPipe} from '@app/shared/core/pipes/exponential-strength.pipe'
 
 @NgModule({
     imports: [
@@ -20,7 +21,7 @@ import '@app/shared/core/extensions';
         LanguageTranslationModule,
         AppRoutingModule
     ],
-    declarations: [AppComponent],
+    declarations: [AppComponent, ExponentialStrengthPipe],
     providers: [
         AuthGuard,
         {

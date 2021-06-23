@@ -7,7 +7,7 @@ const routes: Routes = [
         path: '',
         component: LayoutComponent,
         children: [
-            { path: '', redirectTo: 'dashboard', pathMatch: 'prefix' },
+            { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
             { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then((m) => m.DashboardModule) },
             { path: 'contents', loadChildren: () => import('./contents/contents.module').then((m) => m.ContentsModule) },
             { path: 'systems', loadChildren: () => import('./systems/systems.module').then((m) => m.SystemsModule) },
