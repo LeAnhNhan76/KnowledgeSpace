@@ -60,7 +60,18 @@ export class RolesComponent implements OnInit {
 
     ngOnInit(): void {
         this.loadData();
-        this.students = this.studentsService.GetAll();
+        // this.studentsService.GetAll().subscribe((response: any) => this.students = response
+        // , (error) => {
+        //     console.log('error', error);
+        // });
+        this.studentsService.GetAll().subscribe({
+            next: (response) => {
+                this.students = response;
+            },
+            error: (error) => {
+                console.log('error', error);
+            }
+        })
     }
 
     loadData(selectedId = null) {
