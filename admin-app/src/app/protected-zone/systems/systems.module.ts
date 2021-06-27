@@ -18,9 +18,10 @@ import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { ValidationMessageModule } from '@app/shared/modules/validation-message/validation-message.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StudentsService} from '@app/shared/services';
+import { StudentsComponent } from './students/students.component';
 
 @NgModule({
-  declarations: [FunctionsComponent, UsersComponent, RolesComponent, PermissionsComponent, RoleDetailComponent],
+  declarations: [FunctionsComponent, UsersComponent, RolesComponent, PermissionsComponent, RoleDetailComponent, StudentsComponent],
   imports: [
     CommonModule,
     SystemsRoutingModule,
