@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { Observable } from 'rxjs';
-import 'rxjs/internal/operators/map'
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class StudentsService{
@@ -17,6 +17,6 @@ export class StudentsService{
         //     {id: 4, name: 'Phan Thanh Bang'},
         // ]
         // return students;
-        return this.httpClient.get(this.apiUrl);
+        return this.httpClient.get(this.apiUrl).pipe(map((response: any) => response));
     }
 }
