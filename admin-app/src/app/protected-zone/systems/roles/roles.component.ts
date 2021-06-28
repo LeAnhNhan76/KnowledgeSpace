@@ -185,6 +185,7 @@ export class RolesComponent implements OnInit {
         this.subscription.unsubscribe();
     }
 
+    //test commit
     onVote(agree: boolean) {
         this.voted = true;
         this.resultVote = agree ? 'agreed' : 'disagreed';
