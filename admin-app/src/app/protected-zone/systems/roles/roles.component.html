@@ -23,6 +23,7 @@
             <ul>SlicePile:
                 <li *ngFor="let item of object | slice:0:3">{{item}}</li>
             </ul>
+            <button (click)="onNaviageToUsersListPage()">Navigate To Users List Page</button>
             <h2>User Form</h2>
             <form #userForm="ngForm" (ngSubmit)="onSubmitForm(userForm.value)" >
                 <div class="form-group">

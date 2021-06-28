@@ -7,6 +7,7 @@ import { NotificationService, RolesService } from '@app/shared/services';
 import { Pagination, Role } from '@app/shared/models';
 import { Subscription } from 'rxjs';
 import { StudentsService } from '@app/shared/services/students.service'
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-roles',
@@ -55,7 +56,8 @@ export class RolesComponent implements OnInit {
         private rolesService: RolesService,
         private modalService: BsModalService,
         private notificationService: NotificationService,
-        private studentsService: StudentsService
+        private studentsService: StudentsService,
+        private router: Router
     ) {}
 
     ngOnInit(): void {
@@ -191,5 +193,9 @@ export class RolesComponent implements OnInit {
 
     onSubmitForm(value: any) {
         console.log('form', value);
+    }
+
+    onNaviageToUsersListPage() : void {
+        this.router.navigate(['systems','users']);
     }
 }
