@@ -7,7 +7,7 @@ import { LoginService, NotificationService, RolesService } from '@app/shared/ser
 import { Pagination, Role } from '@app/shared/models';
 import { Subscription } from 'rxjs';
 import { StudentsService } from '@app/shared/services/students.service'
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-roles',
@@ -48,6 +48,8 @@ export class RolesComponent implements OnInit {
     public object: string[] = ['a', 'b', 'c', 'd', 'e'];
     public cities: object[] = [{ id: 1, name: 'Ho Chi Minh' },{ id: 2, name: 'Ha Noi' },{ id: 3, name: 'Da Nang' }];
     public students : any[]= [];
+    public pages: number[];
+    public currentPage: number;
 
     @Input() public name: string;
     @Output() public onReturnResultVote = new EventEmitter<boolean>();
@@ -58,7 +60,8 @@ export class RolesComponent implements OnInit {
         private notificationService: NotificationService,
         private studentsService: StudentsService,
         private router: Router,
-        private loginService: LoginService
+        private loginService: LoginService,
+        private activatedRoute : ActivatedRoute
     ) {}
 
     ngOnInit(): void {
@@ -67,6 +70,10 @@ export class RolesComponent implements OnInit {
         // , (error) => {
         //     console.log('error', error);
         // });
+        this.activatedRoute.params.subscribe(params => {
+            this.currentPage = params['pageIndex'] | 1;
+            console.log('currentPage', this.currentPage);
+        });
         this.studentsService.GetAll().subscribe({
             next: (response) => {
                 this.students = response;
@@ -75,6 +82,7 @@ export class RolesComponent implements OnInit {
                 console.log('error', error);
             }
         })
+        this.pages = [1,2,3,4,5];
     }
 
     loadData(selectedId = null) {
