@@ -19,9 +19,10 @@ import { ValidationMessageModule } from '@app/shared/modules/validation-message/
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StudentsService} from '@app/shared/services';
 import { StudentsComponent } from './students/students.component';
+import { StudentDetailComponent } from './students/student-detail/student-detail.component';
 
 @NgModule({
-  declarations: [FunctionsComponent, UsersComponent, RolesComponent, PermissionsComponent, RoleDetailComponent, StudentsComponent],
+  declarations: [FunctionsComponent, UsersComponent, RolesComponent, PermissionsComponent, RoleDetailComponent, StudentsComponent, StudentDetailComponent],
   imports: [
     CommonModule,
     SystemsRoutingModule,

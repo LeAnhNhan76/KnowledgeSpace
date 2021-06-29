@@ -59,9 +59,28 @@
                 <button type="submit" [disabled]="userForm.invalid" class="btn btn-danger">Submit</button>
             </form>
             <h3>Students List</h3>
-            <ul>
-                <li *ngFor="let student of students">{{student.name}}</li>
-            </ul>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>age</th>
+                        <th>phone</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of students">
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.age}}</td>
+                        <td>{{item.phone}}</td>
+                        <td>
+                            <a [routerLink]="['/systems','student-detail',item.id]">Show detail</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <p-header>
             <div class="p-grid">

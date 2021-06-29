@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FunctionsComponent } from './functions/functions.component';
 import { PermissionsComponent } from './permissions/permissions.component';
 import { RolesComponent } from './roles/roles.component';
+import { StudentDetailComponent } from './students/student-detail/student-detail.component';
 import { StudentsComponent } from './students/students.component';
 import { UsersComponent } from './users/users.component';
 
@@ -30,6 +31,10 @@ const routes: Routes = [
     {
         path: 'students',
         component: StudentsComponent
+    },
+    {
+        path: 'student-detail/:id',
+        component: StudentDetailComponent
     }
 ];
 
