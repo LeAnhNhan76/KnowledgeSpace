@@ -3,7 +3,7 @@ import { asLiteral } from '@angular/compiler/src/render3/view/util';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { MessageConstants } from '@app/shared/core/constants';
-import { NotificationService, RolesService } from '@app/shared/services';
+import { LoginService, NotificationService, RolesService } from '@app/shared/services';
 import { Pagination, Role } from '@app/shared/models';
 import { Subscription } from 'rxjs';
 import { StudentsService } from '@app/shared/services/students.service'
@@ -57,7 +57,8 @@ export class RolesComponent implements OnInit {
         private modalService: BsModalService,
         private notificationService: NotificationService,
         private studentsService: StudentsService,
-        private router: Router
+        private router: Router,
+        private loginService: LoginService
     ) {}
 
     ngOnInit(): void {
@@ -198,5 +199,10 @@ export class RolesComponent implements OnInit {
 
     onNaviageToUsersListPage() : void {
         this.router.navigate(['systems','users']);
+    }
+
+    onLogout() : void {
+        this.loginService.onSetLoggedIn(false);
+        this.router.navigate(['/']);
     }
 }

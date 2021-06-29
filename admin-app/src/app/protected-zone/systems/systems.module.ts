@@ -17,12 +17,14 @@ import { NotificationService } from '@app/shared/services';
 import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { ValidationMessageModule } from '@app/shared/modules/validation-message/validation-message.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StudentsService} from '@app/shared/services';
+import { StudentsService, LoginService} from '@app/shared/services';
 import { StudentsComponent } from './students/students.component';
 import { StudentDetailComponent } from './students/student-detail/student-detail.component';
+import { LoginComponent } from './login/login.component';
+import { CheckLoginGuard, CheckSavingFormGuard } from '@app/shared/guard';
 
 @NgModule({
-  declarations: [FunctionsComponent, UsersComponent, RolesComponent, PermissionsComponent, RoleDetailComponent, StudentsComponent, StudentDetailComponent],
+  declarations: [FunctionsComponent, UsersComponent, RolesComponent, PermissionsComponent, RoleDetailComponent, StudentsComponent, StudentDetailComponent, LoginComponent],
   imports: [
     CommonModule,
     SystemsRoutingModule,
@@ -41,7 +43,10 @@ import { StudentDetailComponent } from './students/student-detail/student-detail
   providers: [
     NotificationService,
     BsModalService,
-    StudentsService
+    StudentsService,
+    LoginService,
+    CheckLoginGuard,
+    CheckSavingFormGuard
   ]
 })
 export class SystemsModule { }

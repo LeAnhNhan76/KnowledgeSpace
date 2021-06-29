@@ -6,6 +6,8 @@ import { RolesComponent } from './roles/roles.component';
 import { StudentDetailComponent } from './students/student-detail/student-detail.component';
 import { StudentsComponent } from './students/students.component';
 import { UsersComponent } from './users/users.component';
+import { LoginComponent } from './login/login.component';
+import { CheckLoginGuard, CheckSavingFormGuard } from '@app/shared';
 
 const routes: Routes = [
     {
@@ -22,7 +24,8 @@ const routes: Routes = [
     },
     {
         path: 'roles',
-        component: RolesComponent
+        component: RolesComponent,
+        canActivate: [CheckLoginGuard]
     },
     {
         path: 'permissions',
@@ -34,7 +37,12 @@ const routes: Routes = [
     },
     {
         path: 'student-detail/:id',
-        component: StudentDetailComponent
+        component: StudentDetailComponent,
+        canDeactivate: [CheckSavingFormGuard]
+    },
+    {
+        path: 'login',
+        component: LoginComponent
     }
 ];
 
