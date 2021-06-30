@@ -1,9 +1,10 @@
-<p>student-detail works!</p>
-<button (click)="onNavigateToStudentsPage()">Navigate to Roles page</button>
 <h3>Student Detail</h3>
-<ul>
-    <li>id: {{student.id}}</li>
-    <li>name: {{student.name}}</li>
-    <li>age: {{student.age}}</li>
-    <li>phone: {{student.phone}}</li>
-</ul>
+<button (click)="onNavigateToStudentsPage()" class="btn btn-primary" style="font-size: 15px;">Navigate to Students page</button>
+<div>
+    <label>Name: </label>
+    <span>{{student.name}}</span> <br/>
+    <label>Age: </label>
+    <span>{{student.age}}</span> <br/>
+    <label>Phone: </label>
+    <span>{{student.phone}}</span>
+</div>

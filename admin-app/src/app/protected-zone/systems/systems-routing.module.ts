@@ -8,6 +8,7 @@ import { StudentsComponent } from './students/students.component';
 import { UsersComponent } from './users/users.component';
 import { LoginComponent } from './login/login.component';
 import { CheckLoginGuard, CheckSavingFormGuard } from '@app/shared';
+import { StudentEditComponent } from './students/student-edit/student-edit.component';
 
 const routes: Routes = [
     {
@@ -39,6 +40,10 @@ const routes: Routes = [
         path: 'student-detail/:id',
         component: StudentDetailComponent,
         canDeactivate: [CheckSavingFormGuard]
+    },
+    {
+        path: 'student-edit',
+        component: StudentEditComponent
     },
     {
         path: 'login',

@@ -8,7 +8,8 @@ export class CheckLoginGuard implements CanActivate{
 
     }
     canActivate(): boolean {
-        return this.loginService.onIsLogged();
+        //return this.loginService.onIsLogged();
+        return true;
     }
 
 }

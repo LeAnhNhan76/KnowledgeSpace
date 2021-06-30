@@ -22,9 +22,10 @@ import { StudentsComponent } from './students/students.component';
 import { StudentDetailComponent } from './students/student-detail/student-detail.component';
 import { LoginComponent } from './login/login.component';
 import { CheckLoginGuard, CheckSavingFormGuard } from '@app/shared/guard';
+import { StudentEditComponent } from './students/student-edit/student-edit.component';
 
 @NgModule({
-  declarations: [FunctionsComponent, UsersComponent, RolesComponent, PermissionsComponent, RoleDetailComponent, StudentsComponent, StudentDetailComponent, LoginComponent],
+  declarations: [FunctionsComponent, UsersComponent, RolesComponent, PermissionsComponent, RoleDetailComponent, StudentsComponent, StudentDetailComponent, LoginComponent, StudentEditComponent],
   imports: [
     CommonModule,
     SystemsRoutingModule,

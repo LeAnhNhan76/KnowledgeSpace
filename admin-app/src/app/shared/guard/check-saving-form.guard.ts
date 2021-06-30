@@ -3,7 +3,8 @@ import { StudentDetailComponent } from "@app/protected-zone/systems/students/stu
 
 export class CheckSavingFormGuard implements CanDeactivate<StudentDetailComponent>{
     canDeactivate(component: StudentDetailComponent): boolean{
-        alert('You can not leave this page without saving form');
-        return false;
+        // alert('You can not leave this page without saving form');
+        // return false;
+        return true;
     }
 }

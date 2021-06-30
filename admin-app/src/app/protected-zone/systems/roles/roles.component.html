@@ -1,6 +1,7 @@
 <p>{{titleText}}</p>
 <div class="animated fadeIn">
     <p-panel #pnl>
+        <a style="font-size: 20px;" [routerLink]="['/systems', 'students']">Navigate to Students page</a><br/>
         <button (click)="onClick(fnameId.value)" class="redClass">Click me!</button> <br />
         FirstName: <input type="text" [(ngModel)]="fname" #fnameId /><br />
         LastName: <input type="text" [(ngModel)]="lname" /><br />
