@@ -35,7 +35,7 @@ namespace KnowledgeSpace.BackendServer
         public void ConfigureServices(IServiceCollection services)
         {
             //1. Setup entity framework
-            services.AddDbContextPool<ApplicationDbContext>(options =>
+            services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
@@ -165,6 +165,14 @@ namespace KnowledgeSpace.BackendServer
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.OAuthClientId("swagger");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Knowledge Space API V1");
+            });
+
             app.UseErrorWrapping();
 
             app.UseStaticFiles();
@@ -185,14 +193,6 @@ namespace KnowledgeSpace.BackendServer
             {
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
-            });
-
-            app.UseSwagger();
-
-            app.UseSwaggerUI(c =>
-            {
-                c.OAuthClientId("swagger");
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Knowledge Space API V1");
             });
         }
     }
